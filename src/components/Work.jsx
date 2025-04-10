@@ -40,7 +40,7 @@ function Work() {
     },
   ];
   return (
-    <div className="w-full ">
+    <div className="w-full mt-12 ">
       <div className=" relative max-w-screen-xl mx-auto text-center">
         <h1 className="text-[30vw] text-white tracking-tight select-none leading-none  font-medium">
           {" "}
@@ -51,6 +51,7 @@ function Work() {
             (elem, index) =>
               elem.isActive && (
                 <img
+                key={index}
                   className="w-60 -translate-x-[50%] -translate-y-[50%] absolute rounded-lg"
                   src={elem.url}
                   style={{ top: elem.top, left: elem.left }}
