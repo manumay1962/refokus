@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+
 
 function Work() {
-  var images = [
+  const [images, setimages] = useState([
     {
       url: "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/634ef09178195ce0073e38f3_Refokus%20Tools-1.png",
       top: "50%",
       left: "58%",
-      isActive: true,
+      isActive: false,
     },
     {
       url: "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/634ef0accfe1b3e66bc55462_Refokus%20Tools.png",
@@ -38,11 +40,51 @@ function Work() {
       left: "55% ",
       isActive: false,
     },
-  ];
+  ]);
+
+ 
+
+  const { scrollYProgress } = useScroll();
+
+  scrollYProgress.on("change", (data) => {
+    function imageshow(arr) {
+      setimages((prev) =>
+        prev.map((item, index) =>
+          arr.indexOf(index) === -1
+            ? { ...item, isActive: false }
+            : { ...item, isActive: true }
+        )
+      );
+    }
+    switch (Math.floor(data * 100)) {
+      case 0:
+        imageshow([]);
+        break;
+      case 1:
+        imageshow([0]);
+        break;
+      case 2:
+        imageshow([0, 1]);
+        break;
+      case 3:
+        imageshow([0, 1, 2]);
+        break;
+      case 4:
+        imageshow([0, 1, 2, 3]);
+        break;
+      case 5:
+        imageshow([0, 1, 2, 3, 4]);
+        break;
+      case 6:
+        imageshow([0, 1, 2, 3, 4, 5]);
+        break;
+    }
+  });
+
   return (
-    <div className="w-full mt-12 ">
+    <div className=" w-full mt-12 ">
       <div className=" relative max-w-screen-xl mx-auto text-center">
-        <h1 className="text-[30vw] text-white tracking-tight select-none leading-none  font-medium">
+        <h1 className=" text-[30vw] text-white tracking-tight select-none leading-none  font-medium">
           {" "}
           work
         </h1>
@@ -51,7 +93,7 @@ function Work() {
             (elem, index) =>
               elem.isActive && (
                 <img
-                key={index}
+                  key={index}
                   className="w-60 -translate-x-[50%] -translate-y-[50%] absolute rounded-lg"
                   src={elem.url}
                   style={{ top: elem.top, left: elem.left }}

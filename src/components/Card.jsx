@@ -6,10 +6,10 @@ function Card({width ,start,para,hover}) {
     <div className={`${width} text-white flex flex-col hover:${hoverclass} justify-between bg-zinc-800 min-h-96 rounded-xl p-5`}>
       <div className="w-full"> 
         <div className="w-full flex items-center justify-between">
-          <h3>heading </h3>
+          <h3>Up Next: News </h3>
           <IoIosArrowRoundForward />
         </div>
-        <h1 className="text-3xl font-medium mt-5">whatever heading</h1>
+        <h1 className="text-3xl font-medium mt-5">Insights and behind the scenes</h1>
       </div>
       <div className="down w-full ">
         {
@@ -24,7 +24,7 @@ function Card({width ,start,para,hover}) {
         }
          
         {para && ( 
-            <p className="text-sm text-white font-regular">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+            <p className="text-sm text-white font-regular">Explore what drives our team.</p>
         )}
       </div>
     </div>
